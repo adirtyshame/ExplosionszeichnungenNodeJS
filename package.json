@@ -1,0 +1,24 @@
+{
+    "name": "ExplosionszeichnungenNodeJS",
+    "description": "JSON Server für Explosionszeichnungen",
+    "version": "0.0.1",
+    "main": "./ExplosionszeichnungenNodeJS.js",
+    "dependencies": {
+        "express": "3.x"
+    },
+    "author": {
+        "name": "Thomas Ames",
+        "email": "t.ames@scooter-attack.com"
+    },
+    "keywords": [],
+    "licenses": {
+        "type": "none"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/adirtyhame/ExplosionszeichnungenNodeJS.git"
+    },
+    "bugs": {
+        "url": "http://github.com/adirtyshame/ExplosionszeichnungenNodeJS/issues"
+    }
+}
