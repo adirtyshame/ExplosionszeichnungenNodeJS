@@ -38,6 +38,17 @@ app.get('/insert.php', function(req, res) {
     res.send('insert.\n');
 });
 
+app.get('/engines/select.php', function(req, res) {
+    var file = __dirname + '/engines.json';
+    fs.readFile(file, 'utf8', function(err, data) {
+        if (err) {
+            console.log('Error: ' + err);
+            return;
+        }
+        res.send(JSON.parse(data));
+    });
+});
+
 var server = app.listen(9080, function() {
     console.log('Listening on port %d', server.address().port);
 });
