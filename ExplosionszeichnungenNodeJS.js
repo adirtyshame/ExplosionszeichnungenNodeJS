@@ -9,9 +9,9 @@ var app = express();
 var fs = require('fs');
 
 app.all('/*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
 });
 
 app.get('/', function(req, res) {
@@ -20,18 +20,27 @@ app.get('/', function(req, res) {
 
 app.get('/select.php', function(req, res) {
     var file = null;
-    if (req.query.motor) {
-        file = __dirname + '/single.json';
+    var motor = req.query.motor;
+    
+    if (motor == null) {
+        console.log("empty request parameter 'motor'");
+    } else if ( motor == 'MA') {
+        file = __dirname + '/MA.json';
+    } else if (motor == 'MS') {
+        file = __dirname + '/MS.json';
+    } 
+    if (file == null) {
+        console.log("empty request parameter 'motor'");
     } else {
-        file = __dirname + '/newjson.json';
+        console.log('serving motor: ',motor);
+        fs.readFile(file, 'utf8', function(err, data) {
+            if (err) {
+                console.log('Error: ' + err);
+                return;
+            }
+            res.send(data);
+        });
     }
-    fs.readFile(file, 'utf8', function(err, data) {
-        if (err) {
-            console.log('Error: ' + err);
-            return;
-        }
-        res.send(JSON.parse(data));
-    });
 });
 
 app.get('/insert.php', function(req, res) {
@@ -45,7 +54,8 @@ app.get('/engines/select.php', function(req, res) {
             console.log('Error: ' + err);
             return;
         }
-        res.send(JSON.parse(data));
+        console.log('read file ', file);
+        res.send(data);
     });
 });
 

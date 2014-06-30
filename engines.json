@@ -1,7 +1,9 @@
 [{
     "name": "Minarelli liegend",
-    "kurz": "MA"
+    "kurz": "MA",
+    "bild": "images/Explosionszeichnung_final.gif"
 },{
     "name": "Minarelli stehend",
-    "kurz": "MS"
+    "kurz": "MS",
+    "bild": "images/Explosionszeichnung_final_ohne.gif"
 }]
